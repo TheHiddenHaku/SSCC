@@ -4,12 +4,49 @@ Serial Shipping Container Code (S.S.C.C.) Calculator
 A simple PHP class to calculate a full SSCC code given your vendor code and shipping id
 
 ```php
-//$vendorCode can be 7 or 8 digits.
-//You must have yours and it should be assigned to you by an authority.
-$vendorCode = 800800800;
-//$shippingId should be the progressive shipping number of your paller of box or whatever
+$vendorCode = 800200800;
 $shippingId = 1234;
-$sscc = new new TheHiddenHaku\SerialShippingContainerCode\SerialShippingContainerCode($vendorCode);
-echo $sscc->calculate($shippingId);
+$sscc = new TheHiddenHaku\SerialShippingContainerCode\SerialShippingContainerCode($vendorCode);
+echo $sscc->calculate($shippingNumber);
 //echoes '080020080000012346'
 ```
+
+### Installation
+install with composer
+```
+composer require thehiddenhaku/sscc
+```
+
+## Usage
+
+First you need to instantiate the class
+```php
+$sscc = new TheHiddenHaku\SerialShippingContainerCode\SerialShippingContainerCode($vendorCode, $extensionDigit);
+```
+The first parameter `$vendorCode` is your personal vendor code.
+The code must be assigned to you (or your client) by and authority.
+
+The second parameter `$extensionDigit` is an optional digit that will be added at the beginning of the code.
+It defaults to `0` but you can override it with any positive integer between `0` and `9`
+
+Once the class is ready, just call the `calculate()` method like this
+```php
+$code = $sscc->calculate($shippingNumber);
+```
+the parameter `$shippingNumber` id the progressive number of your shipping.
+It will return a complete SSCC code (with the correct Check Digit) which you can use where needed for instance in logistic labels
+
+###Testing
+
+I used phpunit so you can just run
+```php
+vendor/bin/phpunit
+```
+
+###Contribute
+
+Feel free to contribute and improve the class. just fork it and open you PR
+
+###License
+
+This library is licensed under the MIT license. Please see [License file](LICENSE.txt) for more information.
