@@ -14,7 +14,7 @@ class SerialShippingContainerCode {
 	{
 
 		$id = $this->zerofill( $id );
-		$extensionDigit = rand( 1, 9) ;
+		$extensionDigit = 0 ;
 		$baseCode = $extensionDigit . $this->gs1Code . $id;
 		$checkDigit = $this->checkDigit( $baseCode );
 

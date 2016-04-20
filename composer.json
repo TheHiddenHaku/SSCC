@@ -13,7 +13,10 @@
     "require": {},
 	"autoload": {
 		"psr-4" : {
-			"TheHiddenHaku\\SerialShippingContainerCode" : "src/"
+			"TheHiddenHaku\\SerialShippingContainerCode\\" : "src/"
 		}
-	}
+	},
+    "require-dev": {
+        "phpunit/phpunit": "^5.3"
+    }
 }
