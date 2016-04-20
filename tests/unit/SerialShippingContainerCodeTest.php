@@ -37,6 +37,15 @@ class SerialShippingContainerCodeTest extends PHPUnit_Framework_TestCase
 		$sscc = new TheHiddenHaku\SerialShippingContainerCode\SerialShippingContainerCode('800200800');
 		$this->assertEquals(9, $this->invokeMethod($sscc, 'checkDigit', ['98002008000001234']));
 	}
+	
+	/** @test */
+	public function it_returns_a_zero_filled_value_of_nine_digits()
+	{
+		$sscc = new TheHiddenHaku\SerialShippingContainerCode\SerialShippingContainerCode('800200800');
+		$this->assertEquals('000001234', $this->invokeMethod($sscc, 'zeroFill', ['1234']));
+		$this->assertEquals('123456789', $this->invokeMethod($sscc, 'zeroFill', ['123456789']));
+		$this->assertEquals('000000000', $this->invokeMethod($sscc, 'zeroFill', ['']));
+	}
 
 	/** @test */
 	public function it_resturns_a_sscc_code_based_on_shipping_number()

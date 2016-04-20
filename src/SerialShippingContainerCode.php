@@ -4,24 +4,41 @@ namespace TheHiddenHaku\SerialShippingContainerCode;
 class SerialShippingContainerCode {
 
 	private $gs1Code;
+	/**
+	 * @var int
+	 */
+	private $extensionDigit;
 
-	public function __construct( $gs1Code )
+	/**
+	 * SerialShippingContainerCode constructor.
+	 * @param     $gs1Code
+	 * @param int $extensionDigit
+	 */
+	public function __construct( $gs1Code, $extensionDigit = 0 )
 	{
 		$this->gs1Code = $gs1Code;
+		$this->extensionDigit = $extensionDigit;
 	}
 
+	/**
+	 * @param $id
+	 * @return string
+	 */
 	public function calculate( $id )
 	{
 
-		$id = $this->zerofill( $id );
-		$extensionDigit = 0 ;
-		$baseCode = $extensionDigit . $this->gs1Code . $id;
+		$id = $this->zeroFill( $id );
+		$baseCode = $this->extensionDigit . $this->gs1Code . $id;
 		$checkDigit = $this->checkDigit( $baseCode );
 
 		return $baseCode . $checkDigit;
 	}
 
-	private function zerofill( $id )
+	/**
+	 * @param $id
+	 * @return mixed
+	 */
+	private function zeroFill( $id )
 	{
 		$maxProgressiveLength = strlen( $this->gs1Code ) == 7 ? 9 : 7;
 
@@ -29,6 +46,10 @@ class SerialShippingContainerCode {
 
 	}
 
+	/**
+	 * @param $basecode
+	 * @return mixed
+	 */
 	private function checkDigit( $basecode )
 	{
 		$digits = str_split( $basecode );
@@ -45,6 +66,10 @@ class SerialShippingContainerCode {
 		return $this->roundUpToNextMultipleOfTen( $sum ) - $sum;
 	}
 
+	/**
+	 * @param $n
+	 * @return mixed
+	 */
 	private function roundUpToNextMultipleOfTen( $n )
 	{
 		return $n % 10 === 0 ? $n : ceil ( $n / 10 ) * 10;
