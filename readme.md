@@ -1,11 +1,11 @@
 Serial Shipping Container Code (S.S.C.C.) Calculator
 ===============
 
-A simple PHP class to calculate a full SSCC code given your vendor code and shipping id
+A simple PHP class to calculate a full SSCC code given your vendor code and shipping number
 
 ```php
 $vendorCode = 800200800;
-$shippingId = 1234;
+$shippingNumber = 1234;
 $sscc = new TheHiddenHaku\SerialShippingContainerCode\SerialShippingContainerCode($vendorCode);
 echo $sscc->calculate($shippingNumber);
 //echoes '080020080000012346'
