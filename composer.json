@@ -1,0 +1,19 @@
+{
+    "name": "thehiddenhaku/sscc",
+    "description": "PHP Serial Shipping Container Code Generator",
+    "license": "MIT",
+	"keywords": ["TheHiddenHaku", "SSCC", "Serial", "Shipping", "Container", "Code", "Logistic"],
+    "authors": [
+        {
+            "name": "Alessio Bottiroli",
+            "email": "alessio@alessiobottiroli.com"
+        }
+    ],
+    "minimum-stability": "dev",
+    "require": {},
+	"autoload": {
+		"psr-4" : {
+			"TheHiddenHaku\\SerialShippingContainerCode" : "src/"
+		}
+	}
+}
