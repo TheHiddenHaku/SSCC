@@ -62,7 +62,7 @@ class SerialShippingContainerCode {
 			}
 			$sum += $v * $multiplier;
 		}
-		echo $sum . PHP_EOL;
+
 		return $this->roundUpToNextMultipleOfTen( $sum ) - $sum;
 	}
 
